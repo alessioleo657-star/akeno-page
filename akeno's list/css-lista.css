@@ -1,0 +1,383 @@
+*{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+                background-position:no-repeat;
+                background-attachment: fixed;
+                background-image: url("C:/Users/aless/OneDrive/Immagini/Screenshot 2026-04-17 144901.png");
+                background-size:auto;
+                position: relative;
+                overflow-x: hidden;
+        }
+
+        /* Background animato con particelle 
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 193, 7, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+
+        /* Linee geometriche di sfondo 
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 188, 212, 0.05) 25%, rgba(0, 188, 212, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 188, 212, 0.05) 75%, rgba(0, 188, 212, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 188, 212, 0.05) 25%, rgba(0, 188, 212, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 188, 212, 0.05) 75%, rgba(0, 188, 212, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+*/
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00bcd4, transparent);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffc107, transparent);
+        }
+
+.orbit-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 30px;
+}
+
+.orbit-image {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00bcd4;
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.8);
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.orbit-image:hover {
+    box-shadow: 0 0 30px rgba(0, 188, 212, 1), 0 0 50px rgba(255, 193, 7, 0.5);
+    border-color: #03f869;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Cerchio azzurro di sfondo */
+.orbit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #00bcd4;
+    border-radius: 50%;
+    opacity: 0.6;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.5), inset 0 0 15px rgba(0, 188, 212, 0.3);
+    box-sizing: border-box;
+}
+
+/* Elemento orbitante posizionato perfettamente al centro */
+.orbit-element {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    left: 50%;
+    /* Centra l'elemento su se stesso e applica l'animazione di orbita */
+    animation: orbitRotate 3s linear infinite;
+    z-index: 40;
+}
+
+.orbit-element img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Opzionale: evita che l'immagine di Kata ruoti sottosopra mentre gira */
+    animation: counterRotate 8s linear infinite;
+}
+
+/*--- ANIMAZIONI ---*/
+
+@keyframes orbitRotate {
+    from {
+        /* Parte dal centro, si sposta di 65px verso destra (raggio dell'orbita) e ruota da 0° */
+        transform: translate(-50%, -50%) rotate(0deg) translateX(125px);
+    }
+    to {
+        /* Compie un giro completo di 360° mantenendo la distanza di 65px */
+        transform: translate(-50%, -50%) rotate(360deg) translateX(125px);
+    }
+}
+
+/* Mantiene l'icona dritta (non ruotata) durante il movimento */
+@keyframes counterRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+        h1 {
+            color: #00bcd4;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px rgba(0, 188, 212, 0.8), 0 0 40px rgba(0, 188, 212, 0.4);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: #ffc107;
+            font-size: 1.2em;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+            letter-spacing: 2px;
+        }
+
+        .list-container {
+            background: rgba(13, 27, 42, 0.7);
+            border: 2px solid #00bcd4;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 
+                0 0 30px rgba(0, 188, 212, 0.3),
+                inset 0 0 20px rgba(0, 188, 212, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .list-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffc107, transparent);
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: list-counter;
+        }
+
+        li {
+            counter-increment: list-counter;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.1em;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        li::before {
+            content: counter(list-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+            font-size: 0.9em;
+        }
+
+        li:hover {
+            color: #00bcd4;
+            transform: translateX(10px);
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.6);
+        }
+
+        li:hover::before {
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+        }
+
+        /* Particelle animate */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 4px;
+            background: #00bcd4;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00bcd4;
+            animation: float 10s infinite;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .list-container {
+                padding: 20px;
+            }
+
+            li {
+                font-size: 1em;
+                padding-left: 35px;
+            }
+        }
+
+        /* Galleria */
+        .gallery-section {
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery-section h2 {
+            color: #ffc107;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+            letter-spacing: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #00bcd4;
+            border-radius: 5px;
+            aspect-ratio: 1;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+            transition: all 0.3s ease;
+            background: rgba(13, 27, 42, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit:contain;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            box-shadow: 0 0 30px rgba(0, 188, 212, 0.6), 0 0 50px rgba(255, 193, 7, 0.3);
+            border-color: #ffc107;
+            transform: scale(1.02);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 60px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay p,a {
+            color: #ff0000;
+            font-size: 1.1em;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .gallery-section h2 {
+                font-size: 1.5em;
+            }
+        }
